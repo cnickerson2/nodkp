@@ -231,7 +231,9 @@ mDB.connect(process.env.MONGODB_URI, (err, database) => {
       var option = message.content.split(' ');
 
       if (message.member.roles.some(r=>['Raid Leader'].includes(r.name)) === true) {
-        if (option[1] === 'init') {initiate_raid(message, database)}
+        if (option[1] === 'init') {
+          console.log('Raid Leader Initialized the Raid'); 
+          initiate_raid(message, database)}
       }
       else
       {
