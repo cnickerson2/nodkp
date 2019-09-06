@@ -66,7 +66,7 @@ module.exports = {
   awarduser: (discord, message, user, amount) => {
     let embed = new discord.RichEmbed()
       .setColor('#ff871f')
-      .setDescription(`**${user}** has been awarded **${amount}**!`);
+      .setDescription(`You have been awarded **${amount}** dkp!`);
     return embed;
   },
 
