@@ -95,7 +95,7 @@ function award(message, database, option) {
     for (let row in table) {
       if (table[row]['active'] && table[row]['raid'] === message.channel.name && option > 0) {
         let raid_members = table[row]['members'];
-        for (let user in raid_members) {if (ontime[message.channel.name].indexOf(user) > -1) {raid_members[user] += parseInt(option)}}
+        for (let user in raid_members) {if (ontime[message.channel.name].length > 0 && ontime[message.channel.name].indexOf(user) > -1) {raid_members[user] += parseInt(option)}}
         collection.updateOne({'raid': message.channel.name}, { $set:{'members':raid_members }});
 
         message.channel.send(response.award(discord, message, option));
