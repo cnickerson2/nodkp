@@ -104,6 +104,22 @@ function award(message, database, option) {
   });
 }
 
+function awarduser(message, database, user, amount) {
+  var collection = database.collection('raid-groups');
+  collection.find({}).toArray((err, table) => {
+    for (let row in table) {
+      if (table[row]['active'] && table[row]['raid'] === message.channel.name && amount > 0) {
+        let raid_members = table[row]['members'];
+        for (let username in table[row]['members']) {if (user === username) {
+          raid_members[username] += parseInt(amount)
+        }}
+        collection.updateOne({'raid': message.channel.name}, { $set:{'members':raid_members }});
+        message.channel.send(response.awarduser(discord, message, user, amount));
+      }
+    }
+  });
+}
+
 function balance(message, database) {
   var collection = database.collection('raid-groups');
   collection.find({}).toArray((err, table) => {
@@ -255,6 +271,7 @@ mDB.connect(process.env.MONGODB_URI, (err, database) => {
           if (option[1] === 'start') {start_raid(message, database)}
           if (option[1] === 'end') {end_raid(message, database)}
           if (option[1] === 'award') {award(message, database, option[2])}
+          if (option[1] === 'awarduser') {awarduser(message,database,option[2],option[3]}
           if (option[1] === 'display') {display(message, database)}
           if (option[1] === 'check') {check(message, database)}
 
