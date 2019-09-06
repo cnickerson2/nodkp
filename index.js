@@ -271,7 +271,7 @@ mDB.connect(process.env.MONGODB_URI, (err, database) => {
           if (option[1] === 'start') {start_raid(message, database)}
           if (option[1] === 'end') {end_raid(message, database)}
           if (option[1] === 'award') {award(message, database, option[2])}
-          if (option[1] === 'awarduser') {awarduser(message,database,option[2],option[3]}
+          if (option[1] === 'awarduser') {awarduser(message,database,option[2],option[3])}
           if (option[1] === 'display') {display(message, database)}
           if (option[1] === 'check') {check(message, database)}
 
