@@ -14,6 +14,7 @@ module.exports = {
       .addField('start', '(**leader**) *Starts the raid, allowing players to join. After 15 minutes, the raid will begin and 1dkp will be awarded for all players ontime.*')
       .addField('end', '(**leader**) *Ends the raid, disables commands, and resets ontime for next raid.*')
       .addField('award [int]', '(**leader**) *Requires an amount, (@bot award 10). Awards all players who have join the raid with the specified amount.*')
+      .addField('awarduser [user] [int]', '(**leader**) *Requires a user and an amount, (@bot awarduser Dreadgnarr 10). Awards the specified players with the specified amount.*')
       .addField('display', '(**leader**) *Show entire raids balance.*')
       .addField('check', '(**leader**) *Show number of players joined.*')
       .addField('auction', '(**leader**) *Start a new auction.*')
@@ -59,6 +60,13 @@ module.exports = {
     let embed = new discord.RichEmbed()
       .setColor('#ffb06b')
       .setDescription(`**${message.channel.name}** raiders have been awarded **${option}**!`);
+    return embed;
+  },  
+  
+  award: (discord, message, user, amount) => {
+    let embed = new discord.RichEmbed()
+      .setColor('#ff871f')
+      .setDescription(`**${user}** has been awarded **${amount}**!`);
     return embed;
   },
 
