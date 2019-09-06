@@ -233,6 +233,10 @@ mDB.connect(process.env.MONGODB_URI, (err, database) => {
       if (message.member.roles.some(r=>['Raid Leader'].includes(r.name)) === true) {
         if (option[1] === 'init') {initiate_raid(message, database)}
       }
+      else
+      {
+        console.log('User other than raid leader attempted init'); 
+      }
       if (available.indexOf(message.channel.name) > -1) {
         if (option[1] === 'join') {join_raid(message, database)}
         if (option[1] === 'balance') {balance(message, database)}
