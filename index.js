@@ -114,7 +114,7 @@ function awarduser(message, database, user, amount) {
           raid_members[username] += parseInt(amount)
         }}
         collection.updateOne({'raid': message.channel.name}, { $set:{'members':raid_members }});
-        message.channel.send(response.awarduser(discord, message, user, amount));
+        message.author.send(response.awarduser(discord, message, user, amount));
       }
     }
   });
